@@ -32,10 +32,10 @@
 
         <div>
 
-          <form id="parameterForm" [formGroup]="parameterForm" (submit)="newQuery()">
+          <form id="parameterForm" [formGroup]="parameterForm" (submit)="newQuery()" class="form-class">
 
             <div>
-              <mat-form-field>
+              <mat-form-field class="form-width-200">
                 <mat-label>Search</mat-label>
                 <input matInput formControlName="q">
               </mat-form-field>
@@ -64,61 +64,57 @@
             </div>
 
             <div>
-              <mat-checkbox formControlName="accepted">Accepted</mat-checkbox>
-              <mat-checkbox formControlName="closed">Closed</mat-checkbox>
+              <mat-checkbox formControlName="accepted"  class="form-width-100">Accepted</mat-checkbox>
+              <mat-checkbox formControlName="closed"  class="form-width-100">Closed</mat-checkbox>
             </div>
 
-            <div>
-              <mat-checkbox formControlName="migrated">Migrated</mat-checkbox>
-              <mat-checkbox formControlName="notice">Notice</mat-checkbox>
-              <mat-checkbox formControlName="wiki">Wiki</mat-checkbox>
-            </div>
 
             <div>
-              <mat-form-field>
+              <mat-form-field class="form-width-200">
                 <mat-label>Tagged</mat-label>
-                <input matInput formControlName="tagged">
+                <input matInput formControlName="tagged" placeholder="Semicolon seperated tags">
               </mat-form-field>
-
-              <mat-form-field>
+            </div>
+            <div>
+              <mat-form-field class="form-width-200">
                 <mat-label>Untagged</mat-label>
-                <input matInput formControlName="untagged">
+                <input matInput formControlName="untagged" placeholder="Semicolon seperated tags">
               </mat-form-field>
             </div>
 
             <div>
-              <mat-form-field>
+              <mat-form-field class="form-width-100">
                 <mat-label>Title</mat-label>
                 <input matInput formControlName="title">
               </mat-form-field>
 
-              <mat-form-field>
-                <mat-label>User</mat-label>
-                <input matInput formControlName="user">
-              </mat-form-field>
-
-              <mat-form-field>
-                <mat-label>URL</mat-label>
-                <input matInput formControlName="url">
+              <mat-form-field class="form-width-100">
+                <mat-label>Body</mat-label>
+                <input matInput formControlName="body">
               </mat-form-field>
             </div>
 
             <div>
-              <mat-form-field>
-                <mat-label>Body</mat-label>
-                <input matInput formControlName="body">
-              </mat-form-field>
 
-              <mat-form-field>
+
+              <mat-form-field class="form-width-100">
                 <mat-label>Minimum Answers</mat-label>
                 <input matInput type="number" formControlName="answers">
               </mat-form-field>
 
-              <mat-form-field>
+              <mat-form-field class="form-width-100">
                 <mat-label>Minimum Views</mat-label>
                 <input matInput type="number" formControlName="views">
               </mat-form-field>
             </div>
+
+          <mat-accordion>
+            <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Additional Parameters
+              </mat-panel-title>
+            </mat-expansion-panel-header>
             <mat-form-field>
               <mat-label>From date</mat-label>
               <input #fromDateInput matInput [matDatepicker]="fromDatePicker" (dateChange)="convertToTimestamp($event, parameterForm.controls.fromdate)">
@@ -146,6 +142,25 @@
               <mat-datepicker-toggle matSuffix [for]="maxPicker"></mat-datepicker-toggle>
               <mat-datepicker #maxPicker></mat-datepicker>
             </mat-form-field>
+
+
+              <mat-form-field class="form-width-100">
+                <mat-label>User</mat-label>
+                <input matInput formControlName="user">
+              </mat-form-field>
+
+              <mat-form-field class="form-width-100">
+                <mat-label>URL</mat-label>
+                <input matInput formControlName="url">
+              </mat-form-field>
+
+            <div>
+              <mat-checkbox formControlName="migrated" class="form-width-100">Migrated</mat-checkbox>
+              <mat-checkbox formControlName="notice" class="form-width-100">Notice</mat-checkbox>
+              <mat-checkbox formControlName="wiki" class="form-width-100">Wiki</mat-checkbox>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
         </form>
       </div>
 
@@ -201,7 +216,7 @@
             </div>
             <div class="card-subtitle-left">
               <div >
-                <button mat-button *ngFor="let tag of item.tags">{{tag}}</button>
+                <button mat-button *ngFor="let tag of item.tags" (click)="searchTag(tag)">{{tag}}</button>
               </div>
             </div>
             <div class="card-subtitle-right card-score-div">

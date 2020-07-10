@@ -36,6 +36,10 @@
 
 }
 
+.form-class {
+  text-align: center;
+}
+
 .card-score-div {
   display: flex;
   align-items: center;
@@ -48,10 +52,13 @@
 }
 
 .form-width-100 {
-  margin-right: 10px;
+  margin-right: 15px;
   width: 100px;
 }
-
+.form-width-200 {
+  margin-right: 15px;
+  width: 215px;
+}
 .score-green {
   color: darkgreen;
 }

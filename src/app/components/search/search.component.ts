@@ -59,26 +59,26 @@ export class SearchComponent implements OnInit {
 
   resetQuery() {
     this.parameterForm.reset({
-      q: [''],
-      order: ['asc'],
-      sort: ['activity'],
-      accepted: [false],
-      closed: [false],
-      migrated: [false],
-      notice: [false],
-      tagged: [''],
-      untagged: [''],
-      title: [''],
-      body: [''],
-      user: [''],
-      url: [''],
-      wiki: [false],
-      answers: [0],
-      views: [0],
-      fromdate: [''],
-      todate: [''],
-      min: [''],
-      max: ['']
+      q: '',
+      order: 'asc',
+      sort: 'activity',
+      accepted: false,
+      closed: false,
+      migrated: false,
+      notice: false,
+      tagged: '',
+      untagged: '',
+      title: '',
+      body: '',
+      user: '',
+      url: '',
+      wiki: false,
+      answers: 0,
+      views: 0,
+      fromdate: '',
+      todate: '',
+      min: '',
+      max: ''
     });
   }
 
@@ -110,6 +110,11 @@ export class SearchComponent implements OnInit {
     else {
       formControlName.setValue('');
     }
+  }
+
+  searchTag(tag) {
+    this.parameterForm.controls.tagged.setValue(tag);
+    this.newQuery();
   }
 
 
