@@ -59,8 +59,26 @@ export class SearchComponent implements OnInit {
 
   resetQuery() {
     this.parameterForm.reset({
-      order: 'asc',
-      sort: 'activity',
+      q: [''],
+      order: ['asc'],
+      sort: ['activity'],
+      accepted: [false],
+      closed: [false],
+      migrated: [false],
+      notice: [false],
+      tagged: [''],
+      untagged: [''],
+      title: [''],
+      body: [''],
+      user: [''],
+      url: [''],
+      wiki: [false],
+      answers: [0],
+      views: [0],
+      fromdate: [''],
+      todate: [''],
+      min: [''],
+      max: ['']
     });
   }
 
@@ -85,6 +103,15 @@ export class SearchComponent implements OnInit {
     this.newQuery();
   }
 
+  convertToTimestamp(event, formControlName) {
+    if (event.value != null) {
+      formControlName.setValue(event.value.valueOf() / 1000);
+    }
+    else {
+      formControlName.setValue('');
+    }
+  }
+
 
   ngOnInit() {
     this.parameterForm = this.formBuilder.group({
@@ -95,6 +122,19 @@ export class SearchComponent implements OnInit {
       closed: [false],
       migrated: [false],
       notice: [false],
+      tagged: [''],
+      untagged: [''],
+      title: [''],
+      body: [''],
+      user: [''],
+      url: [''],
+      wiki: [false],
+      answers: [0],
+      views: [0],
+      fromdate: [''],
+      todate: [''],
+      min: [''],
+      max: ['']
     });
     this.newQuery();
   }

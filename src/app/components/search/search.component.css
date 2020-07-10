@@ -59,3 +59,10 @@
 .score-red {
   color: darkred;
 }
+
+.accepted-tick {
+  color: green;
+  position: relative;
+  top: 4px;
+  font-size: 20px;
+}

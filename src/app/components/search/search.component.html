@@ -42,6 +42,16 @@
             </div>
 
             <div>
+
+              <mat-form-field class="form-width-100">
+                <mat-label>Sort By</mat-label>
+                <mat-select formControlName="sort">
+                  <mat-option *ngFor="let sortingCriterion of sortingCriteria" [value]="sortingCriterion.value">
+                      {{sortingCriterion.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
               <mat-form-field class="form-width-100">
                 <mat-label>Order</mat-label>
                 <mat-select formControlName="order">
@@ -51,14 +61,6 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field class="form-width-100">
-                <mat-label>Sort</mat-label>
-                <mat-select formControlName="sort">
-                  <mat-option *ngFor="let sortingCriterion of sortingCriteria" [value]="sortingCriterion.value">
-                      {{sortingCriterion.name}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
             </div>
 
             <div>
@@ -69,14 +71,87 @@
             <div>
               <mat-checkbox formControlName="migrated">Migrated</mat-checkbox>
               <mat-checkbox formControlName="notice">Notice</mat-checkbox>
+              <mat-checkbox formControlName="wiki">Wiki</mat-checkbox>
             </div>
 
+            <div>
+              <mat-form-field>
+                <mat-label>Tagged</mat-label>
+                <input matInput formControlName="tagged">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Untagged</mat-label>
+                <input matInput formControlName="untagged">
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field>
+                <mat-label>Title</mat-label>
+                <input matInput formControlName="title">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>User</mat-label>
+                <input matInput formControlName="user">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>URL</mat-label>
+                <input matInput formControlName="url">
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field>
+                <mat-label>Body</mat-label>
+                <input matInput formControlName="body">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Minimum Answers</mat-label>
+                <input matInput type="number" formControlName="answers">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Minimum Views</mat-label>
+                <input matInput type="number" formControlName="views">
+              </mat-form-field>
+            </div>
+            <mat-form-field>
+              <mat-label>From date</mat-label>
+              <input #fromDateInput matInput [matDatepicker]="fromDatePicker" (dateChange)="convertToTimestamp($event, parameterForm.controls.fromdate)">
+              <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #fromDatePicker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>To date</mat-label>
+              <input #toDateInput matInput [matDatepicker]="toDatePicker" (dateChange)="convertToTimestamp($event, parameterForm.controls.todate)">
+              <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #toDatePicker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Minimum date</mat-label>
+              <input #minInput matInput [matDatepicker]="minPicker" (dateChange)="convertToTimestamp($event, parameterForm.controls.min)">
+              <mat-datepicker-toggle matSuffix [for]="minPicker"></mat-datepicker-toggle>
+              <mat-datepicker #minPicker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Maximum date</mat-label>
+              <input #maxInput matInput [matDatepicker]="maxPicker" (dateChange)="convertToTimestamp($event, parameterForm.controls.max)">
+              <mat-datepicker-toggle matSuffix [for]="maxPicker"></mat-datepicker-toggle>
+              <mat-datepicker #maxPicker></mat-datepicker>
+            </mat-form-field>
         </form>
       </div>
 
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button (click)="resetQuery()">Reset</button>
+        <button mat-raised-button (click)="resetQuery(); fromDateInput.value=''; toDateInput.value=''; minInput.value=''; maxInput.value=''">Reset</button>
         <button mat-raised-button color="primary" type="submit" form="parameterForm">Apply</button>
       </mat-card-actions>
     </mat-card>
@@ -93,6 +168,7 @@
           (click)="getUserData(item.owner) && openLink(item.owner.link)">
           </div>
           <mat-card-title (click)="openLink(item.link)" style="cursor: pointer;">
+            <mat-icon class="accepted-tick" *ngIf="item.is_answered" matTooltip="Answered">check_circle</mat-icon>
               {{item.title}}
           </mat-card-title>
           <mat-card-subtitle>
