@@ -13,6 +13,7 @@ export class SearchComponent implements OnInit {
   parameterForm: FormGroup;
   receivedQueryArray = [];
   currentPageIndex = 0;
+  pageSize = 10;
   constructor(private formBuilder: FormBuilder,
               private dataExtractionService: DataExtractionService) { }
 
@@ -49,7 +50,7 @@ export class SearchComponent implements OnInit {
 
   newQuery() {
     console.log(this.parameterForm);
-    this.dataExtractionService.advancedSearch(this.parameterForm.value, this.currentPageIndex).subscribe(
+    this.dataExtractionService.advancedSearch(this.parameterForm.value, this.currentPageIndex, this.pageSize).subscribe(
       (data) => {
         console.log(data);
         this.receivedQueryArray = data.items;
@@ -99,7 +100,7 @@ export class SearchComponent implements OnInit {
 
   pageEvent(event) {
     this.currentPageIndex = event.pageIndex;
-    console.log(this.currentPageIndex);
+    this.pageSize = event.pageSize;
     this.newQuery();
   }
 

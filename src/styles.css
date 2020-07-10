@@ -14,3 +14,29 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
+
+::-webkit-scrollbar {
+  background-color: #fff;
+  width: 12px;
+  height: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: rgba(238, 238, 238, 0.27);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 16px;
+  border-radius: 16px;
+  background-color: rgba(179,179,185,0.81);
+  border: 3px solid #fff;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(149,149,155);
+}
+.mat-card-actions .mat-button:first-child, .mat-card-actions .mat-raised-button:first-child, .mat-card-actions .mat-stroked-button:first-child {
+  margin-left: 8px !important;
+  margin-right: 8px !important;
+}

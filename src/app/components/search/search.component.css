@@ -4,9 +4,26 @@
   padding: 10px;
   margin-left: 5px;
 }
+.navbar-logo-right {
+  float: right;
+  width: 20px;
+  padding: 10px;
+  margin-left: 5px;
+}
 
 .sidenav-container {
-  height: calc(100% - 81.13px - 56px);
+  height: calc(100% - 81.13px);
+}
+.sidenav-card {
+  box-shadow: none !important;
+  height: 100%;
+}
+
+.sidenav-actions {
+  position: sticky;
+  bottom: 2px;
+  background-color: white;
+  text-align: center;
 }
 .sidenav {
   width: 350px;
@@ -36,8 +53,9 @@
 
 }
 
+
 .form-class {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .card-score-div {
@@ -72,4 +90,13 @@
   position: relative;
   top: 4px;
   font-size: 20px;
+}
+
+.paginator-div {
+  position: sticky;
+  bottom: 0;
+}
+
+.sidenav-content {
+  position: relative;
 }
