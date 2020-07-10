@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light noselect">
   <div class="navbar-logo">
     <a >
       <img style="width: 200px;" src="./assets/images/teamwave.png">
@@ -19,7 +19,7 @@
 
   </form> -->
 </nav>
-<mat-sidenav-container class="sidenav-container"  >
+<mat-sidenav-container class="sidenav-container noselect">
   <mat-sidenav #sidenav mode="side" [opened]="true" class="sidenav">
 
     <mat-card class="example-card">
@@ -33,23 +33,44 @@
         <div>
 
           <form id="parameterForm" [formGroup]="parameterForm" (submit)="newQuery()">
-            <mat-form-field class="form-width-100">
-              <mat-label>Order</mat-label>
-              <mat-select formControlName="order">
-                <mat-option *ngFor="let order of sortingOrders" [value]="order.value">
-                    {{order.name}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
 
-            <mat-form-field class="form-width-100">
-              <mat-label>Sort</mat-label>
-              <mat-select formControlName="sort">
-                <mat-option *ngFor="let sortingCriterion of sortingCriteria" [value]="sortingCriterion.value">
-                    {{sortingCriterion.name}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+            <div>
+              <mat-form-field>
+                <mat-label>Search</mat-label>
+                <input matInput formControlName="q">
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-form-field class="form-width-100">
+                <mat-label>Order</mat-label>
+                <mat-select formControlName="order">
+                  <mat-option *ngFor="let order of sortingOrders" [value]="order.value">
+                      {{order.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field class="form-width-100">
+                <mat-label>Sort</mat-label>
+                <mat-select formControlName="sort">
+                  <mat-option *ngFor="let sortingCriterion of sortingCriteria" [value]="sortingCriterion.value">
+                      {{sortingCriterion.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-checkbox formControlName="accepted">Accepted</mat-checkbox>
+              <mat-checkbox formControlName="closed">Closed</mat-checkbox>
+            </div>
+
+            <div>
+              <mat-checkbox formControlName="migrated">Migrated</mat-checkbox>
+              <mat-checkbox formControlName="notice">Notice</mat-checkbox>
+            </div>
+
         </form>
       </div>
 
@@ -67,11 +88,18 @@
     <div class="card-padding" *ngFor="let item of receivedQueryArray">
       <mat-card class="example-card">
         <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{item.title}}</mat-card-title>
+          <div mat-card-avatar style="background-size: cover; cursor: pointer;"
+          [ngStyle]="{'background-image': getUserData(item.owner) ? 'url(' + item.owner.profile_image + ')': 'url(' + './assets/images/anonymous-icon.jpg' +')'}"
+          (click)="getUserData(item.owner) && openLink(item.owner.link)">
+          </div>
+          <mat-card-title (click)="openLink(item.link)" style="cursor: pointer;">
+              {{item.title}}
+          </mat-card-title>
           <mat-card-subtitle>
             <div class="card-subtitle">
-              <a class="card-subtitle-left">{{item.owner.display_name}}</a>
+              <a class="card-subtitle-left" (click)="getUserData(item.owner) && openLink(item.owner.link)" style="cursor: pointer;">
+                {{item.owner.display_name}}
+              </a>
               <div class="card-subtitle-right">
 
               </div>
@@ -90,25 +118,27 @@
 
           <div class="card-subtitle">
             <div class="card-score-div">
-              <a class="card-score">+1</a>
+              <a class="card-score" [ngClass]="{'score-green': item.score > 0, 'score-red': item.score < 0}">
+                <a *ngIf="item.score > 0">+</a>
+                {{item.score}}
+              </a>
             </div>
             <div class="card-subtitle-left">
-              <div>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
+              <div >
+                <button mat-button *ngFor="let tag of item.tags">{{tag}}</button>
               </div>
             </div>
             <div class="card-subtitle-right card-score-div">
                 <div>
-                <mat-icon>
+                <mat-icon matTooltip="Answers">
                   question_answer
-                </mat-icon> 1
-                <mat-icon>
+                </mat-icon> {{item.answer_count}}
+                <mat-icon matTooltip="Views">
                   remove_red_eye
-                </mat-icon> 1
-                <mat-icon>
+                </mat-icon> {{item.view_count}}
+                <mat-icon matTooltip="Date Created">
                   date_range
-                </mat-icon> 1
+                </mat-icon> {{item.creation_date* 1000 | date}}
               </div>
             </div>
           </div>
@@ -116,6 +146,11 @@
 
       </mat-card>
     </div>
+
   </mat-sidenav-content>
 </mat-sidenav-container>
-
+<mat-paginator [length]="10000"
+[pageSize]="10"
+(page)="pageEvent($event)"
+>
+</mat-paginator>

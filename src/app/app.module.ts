@@ -15,6 +15,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSelectModule} from '@angular/material/select';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import {MatSelectModule} from '@angular/material/select';
     HttpClientModule,
     MatCardModule,
     MatSidenavModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTooltipModule,
+    MatPaginatorModule,
+    MatCheckboxModule
   ],
   providers: [MatFormFieldModule,
     DataExtractionService

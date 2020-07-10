@@ -6,7 +6,7 @@
 }
 
 .sidenav-container {
-  height: calc(100% - 81.13px);
+  height: calc(100% - 81.13px - 56px);
 }
 .sidenav {
   width: 350px;
@@ -50,4 +50,12 @@
 .form-width-100 {
   margin-right: 10px;
   width: 100px;
+}
+
+.score-green {
+  color: darkgreen;
+}
+
+.score-red {
+  color: darkred;
 }

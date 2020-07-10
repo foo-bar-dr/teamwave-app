@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { DataExtractionService } from 'src/app/services/data-extraction.service';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-search',
@@ -11,10 +12,11 @@ export class SearchComponent implements OnInit {
 
   parameterForm: FormGroup;
   receivedQueryArray = [];
-
+  currentPageIndex = 0;
   constructor(private formBuilder: FormBuilder,
               private dataExtractionService: DataExtractionService) { }
 
+  // Form Initilization
   sortingOrders = [
     {
       name: 'Ascending',
@@ -44,9 +46,10 @@ export class SearchComponent implements OnInit {
     }
   ];
 
+
   newQuery() {
     console.log(this.parameterForm);
-    this.dataExtractionService.advancedSearch(this.parameterForm.value).subscribe(
+    this.dataExtractionService.advancedSearch(this.parameterForm.value, this.currentPageIndex).subscribe(
       (data) => {
         console.log(data);
         this.receivedQueryArray = data.items;
@@ -61,12 +64,39 @@ export class SearchComponent implements OnInit {
     });
   }
 
+  getUserData(params) {
+    if (params.user_type === 'does_not_exist')
+      {
+        return false;
+      }
+    else
+    {
+      return true;
+    }
+  }
+
+  openLink(url) {
+    window.open(url, '_blank');
+  }
+
+  pageEvent(event) {
+    this.currentPageIndex = event.pageIndex;
+    console.log(this.currentPageIndex);
+    this.newQuery();
+  }
+
+
   ngOnInit() {
     this.parameterForm = this.formBuilder.group({
+      q: [''],
       order: ['asc'],
       sort: ['activity'],
-
+      accepted: [false],
+      closed: [false],
+      migrated: [false],
+      notice: [false],
     });
+    this.newQuery();
   }
 
 }
