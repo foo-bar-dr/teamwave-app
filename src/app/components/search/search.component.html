@@ -1,14 +1,121 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Email</mat-label>
-    <input matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
-           placeholder="Ex. pat@example.com">
-    <mat-hint>Errors appear instantly!</mat-hint>
-    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-      Please enter a valid email address
-    </mat-error>
-    <mat-error *ngIf="emailFormControl.hasError('required')">
-      Email is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
-</form>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="navbar-logo">
+    <a >
+      <img style="width: 200px;" src="./assets/images/teamwave.png">
+    </a>
+  </div>
+
+  <!-- <form class="example-form" [formGroup]="parameterForm" (submit)="newQuery()">
+    <mat-form-field class="example-full-width" >
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email"
+             placeholder="Ex. pat@example.com">
+    </mat-form-field>
+
+
+      <button mat-icon-button  (click)="openSearch()" type="submit">
+        <mat-icon>search</mat-icon>
+    </button>
+
+  </form> -->
+</nav>
+<mat-sidenav-container class="sidenav-container"  >
+  <mat-sidenav #sidenav mode="side" [opened]="true" class="sidenav">
+
+    <mat-card class="example-card">
+      <mat-card-header>
+
+        <mat-card-title>Advanced Search</mat-card-title>
+        <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+      </mat-card-header>
+      <mat-card-content>
+
+        <div>
+
+          <form id="parameterForm" [formGroup]="parameterForm" (submit)="newQuery()">
+            <mat-form-field class="form-width-100">
+              <mat-label>Order</mat-label>
+              <mat-select formControlName="order">
+                <mat-option *ngFor="let order of sortingOrders" [value]="order.value">
+                    {{order.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="form-width-100">
+              <mat-label>Sort</mat-label>
+              <mat-select formControlName="sort">
+                <mat-option *ngFor="let sortingCriterion of sortingCriteria" [value]="sortingCriterion.value">
+                    {{sortingCriterion.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+        </form>
+      </div>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="resetQuery()">Reset</button>
+        <button mat-raised-button color="primary" type="submit" form="parameterForm">Apply</button>
+      </mat-card-actions>
+    </mat-card>
+
+  </mat-sidenav>
+
+
+  <mat-sidenav-content>
+    <div class="card-padding" *ngFor="let item of receivedQueryArray">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{item.title}}</mat-card-title>
+          <mat-card-subtitle>
+            <div class="card-subtitle">
+              <a class="card-subtitle-left">{{item.owner.display_name}}</a>
+              <div class="card-subtitle-right">
+
+              </div>
+            </div>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+      <!--   <mat-card-content>
+          <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+          </p>
+        </mat-card-content> -->
+        <mat-card-actions>
+
+          <div class="card-subtitle">
+            <div class="card-score-div">
+              <a class="card-score">+1</a>
+            </div>
+            <div class="card-subtitle-left">
+              <div>
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+              </div>
+            </div>
+            <div class="card-subtitle-right card-score-div">
+                <div>
+                <mat-icon>
+                  question_answer
+                </mat-icon> 1
+                <mat-icon>
+                  remove_red_eye
+                </mat-icon> 1
+                <mat-icon>
+                  date_range
+                </mat-icon> 1
+              </div>
+            </div>
+          </div>
+        </mat-card-actions>
+
+      </mat-card>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
