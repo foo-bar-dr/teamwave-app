@@ -1,15 +1,5 @@
 
-.navbar-logo {
-  float: left;
-  padding: 10px;
-  margin-left: 5px;
-}
-.navbar-logo-right {
-  float: right !important;
-  padding: 10px;
-  margin-right: 10px;
-  cursor: pointer;
-}
+
 
 .sidenav-container {
   height: calc(100% - 81.13px);

@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'teamwave-app';
+
+  openLink(url) {
+    window.open(url, '_blank');
+  }
 }
