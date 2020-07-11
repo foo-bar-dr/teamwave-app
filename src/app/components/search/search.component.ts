@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { DataExtractionService } from 'src/app/services/data-extraction.service';
-import { PageEvent } from '@angular/material/paginator';
+import { PageEvent, MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-search',
@@ -14,6 +14,7 @@ export class SearchComponent implements OnInit {
   receivedQueryArray = [];
   currentPageIndex = 0;
   pageSize = 10;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(private formBuilder: FormBuilder,
               private dataExtractionService: DataExtractionService) { }
 
@@ -50,6 +51,10 @@ export class SearchComponent implements OnInit {
 
   newQuery() {
     console.log(this.parameterForm);
+    this.currentPageIndex = 0;
+    if (this.paginator) {
+      this.paginator.pageIndex = this.currentPageIndex;
+    }
     this.dataExtractionService.advancedSearch(this.parameterForm.value, this.currentPageIndex, this.pageSize).subscribe(
       (data) => {
         console.log(data);
@@ -101,7 +106,12 @@ export class SearchComponent implements OnInit {
   pageEvent(event) {
     this.currentPageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
-    this.newQuery();
+    this.dataExtractionService.advancedSearch(this.parameterForm.value, this.currentPageIndex, this.pageSize).subscribe(
+      (data) => {
+        console.log(data);
+        this.receivedQueryArray = data.items;
+      }
+    );
   }
 
   convertToTimestamp(event, formControlName) {

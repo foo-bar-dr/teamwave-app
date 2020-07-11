@@ -5,10 +5,10 @@
   margin-left: 5px;
 }
 .navbar-logo-right {
-  float: right;
-  width: 20px;
+  float: right !important;
   padding: 10px;
-  margin-left: 5px;
+  margin-right: 10px;
+  cursor: pointer;
 }
 
 .sidenav-container {
@@ -55,7 +55,14 @@
 
 
 .form-class {
-  /* text-align: center; */
+  text-align: center;
+}
+
+.checkbox-div {
+  display: flex;
+    justify-content: space-between;
+    margin-left: 15px;
+    margin-right: 10px;
 }
 
 .card-score-div {

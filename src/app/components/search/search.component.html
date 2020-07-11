@@ -1,24 +1,30 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light noselect" style="width: 100%;">
-  <div class="navbar-logo">
-    <a >
+<nav class="navbar  navbar-light bg-light noselect" style="width: 100%;">
+  <div class="navbar-logo" >
+    <a  >
       <img style="width: 200px;" src="./assets/images/teamwave.png">
     </a>
   </div>
 
-<!--   <div class="navbar-logo-right">
+
+  <div class="navbar-logo-right">
     <a >
-      <img style="width: 100px;" src="./assets/images/github-icon.png">
+      <img style="width: 30px;" src="./assets/images/github-icon.png" matTooltip="Clone this project" (click)="openLink('https://github.com/foo-bar-dr/teamwave-app')">
     </a>
-  </div> -->
+  </div>
 
 </nav>
-<mat-sidenav-container class="sidenav-container noselect">
-  <mat-sidenav #sidenav mode="side" [opened]="true" class="sidenav">
+<mat-sidenav-container class="sidenav-container noselect" >
+  <mat-sidenav #sidenav mode="side" [opened]="true" class="sidenav" [disableClose]="true">
 
     <mat-card class="sidenav-card">
       <mat-card-header style="place-content: center">
 
-        <mat-card-title>Advanced Search</mat-card-title>
+        <mat-card-title>
+          <div style="text-align: center;">
+            <img style="width: 150px;" src="./assets/images/stackoverflow-logo.png">
+          </div>
+          Advanced Search
+        </mat-card-title>
         <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
       </mat-card-header>
       <mat-card-content>
@@ -29,7 +35,7 @@
 
             <div>
               <mat-form-field class="form-width-200">
-                <mat-label>Search</mat-label>
+                <mat-label>Search query</mat-label>
                 <input matInput formControlName="q">
               </mat-form-field>
             </div>
@@ -56,9 +62,9 @@
 
             </div>
 
-            <div>
-              <mat-checkbox formControlName="accepted"  class="form-width-100">Accepted</mat-checkbox>
-              <mat-checkbox formControlName="closed"  class="form-width-100">Closed</mat-checkbox>
+            <div class="checkbox-div">
+              <mat-checkbox formControlName="accepted"  class="form-width-100" color="primary">Accepted</mat-checkbox>
+              <mat-checkbox formControlName="closed"  class="form-width-100" color="primary">Closed</mat-checkbox>
             </div>
 
 
@@ -144,15 +150,16 @@
                 <input matInput type="number" formControlName="views">
               </mat-form-field>
 
-            <div>
-              <mat-checkbox formControlName="migrated" class="form-width-100">Migrated</mat-checkbox>
+            <div style="text-align: left;">
+              <mat-checkbox formControlName="migrated" class="form-width-100" color="primary">Migrated</mat-checkbox>
             </div>
-            <div>
-              <mat-checkbox formControlName="notice" class="form-width-100">Notice</mat-checkbox>
+            <div style="text-align: left;">
+              <mat-checkbox formControlName="notice" class="form-width-100" color="primary">Notice</mat-checkbox>
             </div>
-            <div>
-              <mat-checkbox formControlName="wiki" class="form-width-100">Wiki</mat-checkbox>
+            <div style="text-align: left;">
+              <mat-checkbox formControlName="wiki" class="form-width-100" color="primary">Wiki</mat-checkbox>
             </div>
+
           </mat-expansion-panel>
         </mat-accordion>
         </form>
@@ -233,6 +240,7 @@
     </div>
     <div class="paginator-div">
       <mat-paginator [length]="10000"
+      [showFirstLastButtons] = "true"
       [pageSize]="10"
       [pageSizeOptions]="[5, 10, 25]"
       (page)="pageEvent($event)"
