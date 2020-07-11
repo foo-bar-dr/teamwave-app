@@ -245,18 +245,48 @@
 
     .sidebar-trainer-card-avatar {
       flex: 16%;
+      align-self: center;
     }
 
     .sidebar-trainer-card-content {
-      flex: 40%;
+      flex: 30%;
+      align-self: center;
+      padding: 10px;
+    }
+    .sidebar-trainer-card-heading {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .sidebar-trainer-card-subheading {
+      font-size: 12px;
+      opacity: 50%;
+    }
+
+    .sidebar-trainer-card-rating-icon {
+      color: #ffbb00;
+      font-size: 22px;
     }
 
     .sidebar-trainer-card-rating {
       flex: 14%;
+      align-self: center;
+      text-align: center;
+      padding: 10px;
     }
 
     .sidebar-trainer-card-share {
-      flex: 14%;
+      flex: 10%;
+      align-self: center;
+      text-align: center;
+      padding: 6px;
+    }
+
+    .sidebar-trainer-card-share-image {
+      border-radius: 50%;
+      background-color: #e9edf5;
+      width: 26px;
+      padding: 4px;
     }
   /* Trainer Cards End */
 /* Side Content Ends */
