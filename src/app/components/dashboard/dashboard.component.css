@@ -2,6 +2,7 @@
 .dashboard-parent-div {
   display: flex;
   height: 100%;
+  overflow: hidden;
 }
 
 .dashboard-main-content {
@@ -11,13 +12,13 @@
 }
 
 .dashboard-navbar {
-  flex: 5%;
+  flex: 3%;
   background-color: #37348e;
   padding: 15px;
 }
 
 .dashboard-side-content {
-  flex: 33%;
+  flex: 30%;
 }
 /* Parent Div Ends */
 
@@ -144,7 +145,7 @@
       /* padding: 30px; */
       padding-top: 10px;
       padding-bottom: 10px;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       margin-left: 40px;
       margin-right: 40px;
       background-color: white;
@@ -201,7 +202,7 @@
       padding: 5px;
       /* background: linear-gradient(291deg, transparent 60%, #00c8f1 50%), linear-gradient(232deg, #A2ECFB 50%, transparent 50%);
        */
-      background: linear-gradient(90deg, rgba(134,136,178,1) 0%, rgba(70,180,191,1) 54%, rgba(79,186,145,1) 100%);;
+      background: linear-gradient(45deg, rgba(134,136,178,1) 0%, rgba(70,180,191,1) 54%, rgba(79,186,145,1) 100%);;
       display: inline-flex;
       justify-content: center;
       width: fit-content;
@@ -232,15 +233,10 @@
       display: inline-flex;
       width: 88%;
       justify-content: space-between;
-      /* padding: 30px; */
-      padding-top: 10px;
-      padding-bottom: 10px;
-      margin-bottom: 30px;
       margin-left: 40px;
       margin-right: 40px;
       background-color: white;
       border-radius: 15px;
-      height: 100px;
     }
 
   /* Map Content Ends */

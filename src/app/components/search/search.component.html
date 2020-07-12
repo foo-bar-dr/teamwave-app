@@ -1,3 +1,26 @@
+<nav class="navbar  navbar-light bg-light noselect" style="width: 100%;">
+  <div class="navbar-logo" >
+    <a  >
+      <img style="width: 200px;" src="./assets/images/teamwave.png">
+    </a>
+<!--     <a routerLink="/dashboard" class="nav-link" style="display: inline; position: relative;top: 3px; color: black;">
+      Dashboard
+    </a> -->
+  </div>
+
+
+
+  <div class="navbar-logo-right">
+    <div matTooltip="Dashboard (mockup)" (click)="openLink('https://github.com/foo-bar-dr/teamwave-app')" routerLink="/dashboard" class="navbar-dashboard-icon">
+      <!-- <img style="width: 30px;" src="./assets/images/github-icon.png" matTooltip="Clone this project" (click)="openLink('https://github.com/foo-bar-dr/teamwave-app')"> -->
+      <mat-icon style="color: white;">flash_on</mat-icon>
+    </div>
+    <a >
+      <img style="width: 30px;" src="./assets/images/github-icon.png" matTooltip="Clone this project" (click)="openLink('https://github.com/foo-bar-dr/teamwave-app')">
+    </a>
+  </div>
+
+</nav>
 
 <mat-sidenav-container class="sidenav-container noselect" >
   <mat-sidenav #sidenav mode="side" [opened]="true" class="sidenav" [disableClose]="true">

@@ -1,5 +1,28 @@
 
+.navbar-logo {
+  float: left;
+  padding: 10px;
+  margin-left: 5px;
+}
+.navbar-logo-right {
+  float: right !important;
+  padding: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
 
+.navbar-dashboard-icon {
+  font-size: 28px;
+    border-radius: 50%;
+    background-color: #484692;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    place-content: center;
+}
 
 .sidenav-container {
   height: calc(100% - 81.13px);
