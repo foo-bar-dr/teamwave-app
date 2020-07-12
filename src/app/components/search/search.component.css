@@ -14,14 +14,13 @@
 }
 
 .navbar-dashboard-icon {
-  font-size: 28px;
     border-radius: 50%;
-    background-color: #484692;
     display: flex;
     width: 30px;
     height: 30px;
     align-items: center;
     place-content: center;
+    margin-right: 15px;
 }
 
 .sidenav-container {

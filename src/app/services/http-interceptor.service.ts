@@ -9,7 +9,6 @@ export class HttpInterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log(req);
     return next.handle(req).pipe(map((event: HttpEvent<any>) => {
       if(event instanceof HttpResponse) {
         return event.clone({body: JSON.parse(JSON.stringify(event.body))});
