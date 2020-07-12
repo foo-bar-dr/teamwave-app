@@ -1,7 +1,25 @@
 <div class="dashboard-parent-div">
 
-  <div class="dashboard-sidebar">
+  <div class="dashboard-navbar">
+    <div class="navbar-card" style="background-color: white; display: flex;">
+      <a style="font-weight: 500; font-style: italic; font-size: 14px; line-height: 2; color: #37348e;">Run.</a>
+    </div>
 
+    <div class="navbar-card vertical-align-center" style="background-color: rgba(255, 255, 255, 0.304); margin-top: 50px;">
+        <mat-icon class="navbar-card-icon">flash_on</mat-icon>
+    </div>
+
+    <div class="navbar-card vertical-align-center">
+      <mat-icon class="navbar-card-icon">message</mat-icon>
+    </div>
+
+    <div class="navbar-card vertical-align-center">
+      <mat-icon class="navbar-card-icon">account_balance_wallet</mat-icon>
+    </div>
+
+    <div class="navbar-card vertical-align-center">
+      <mat-icon class="navbar-card-icon">settings</mat-icon>
+    </div>
 
   </div>
 
@@ -10,11 +28,15 @@
     <div class="main-content-top">
       <div class="greeting-div">
         <p class="greeting-text-big"> Hello, Max </p>
-        Here are your daily statistics
+        <a style="opacity: 0.7;">Here are your daily statistics</a>
       </div>
 
-      <div class="datepicker-div vertical-align-center">
-        <input type="date">
+      <div class="datepicker-div">
+          <input type="date" style="    display: flex;
+          color: #37348e !important;
+          border: 0;
+          background: #e9edf5;
+          width: 130px;">
       </div>
     </div>
 
@@ -24,17 +46,19 @@
 
         <div class="card-stats-left">
           <div class="card-stats-title">
-            Heart
+            <a class="card-stats-title-text" style="color: red;">Heart</a>
+            <mat-icon class="card-stats-title-icon">favorite</mat-icon>
           </div>
 
           <div class="card-stats-body">
-            119 BPM
+            <a class="card-stats-body-big">119</a>
+            <a class="card-stats-body-small">bpm</a>
           </div>
 
         </div>
 
-        <div class="card-stats-right">
-
+        <div class="card-stats-right" style="background: linear-gradient(to top, rgba(94,182,70,1) 77% , white 23%);">
+          <a class="card-stats-right-text" style="top: 25%;">82%</a>
         </div>
       </div>
 
@@ -42,17 +66,19 @@
 
         <div class="card-stats-left">
           <div class="card-stats-title">
-            Heart
+            <a class="card-stats-title-text" style="color: green;">Running</a>
+            <mat-icon class="card-stats-title-icon">directions_run</mat-icon>
           </div>
 
           <div class="card-stats-body">
-            119 BPM
+            <a class="card-stats-body-big">3043</a>
+            <a class="card-stats-body-small">m</a>
           </div>
 
         </div>
 
-        <div class="card-stats-right">
-
+        <div class="card-stats-right" style="background: linear-gradient(to top, rgba(59, 193, 177,0.5) 40% , white 40%), linear-gradient(to bottom, #42cbc3 79% , #35b8a1 101%);">
+          <a class="card-stats-right-text" style="top: 60%;">39%</a>
         </div>
       </div>
 
@@ -60,29 +86,49 @@
 
         <div class="card-stats-left">
           <div class="card-stats-title">
-            Heart
+            <a class="card-stats-title-text" style="color: orange;">Calories</a>
+            <mat-icon class="card-stats-title-icon">local_fire_department</mat-icon>
           </div>
 
           <div class="card-stats-body">
-            119 BPM
+            <a class="card-stats-body-big">301</a>
+            <a class="card-stats-body-small">kcal</a>
           </div>
 
         </div>
 
-        <div class="card-stats-right">
-
+        <div class="card-stats-right" style="background: linear-gradient(to top, #a2a7b1 30% , white 20%);">
+          <a class="card-stats-right-text" style="top: 69%;">18%</a>
         </div>
       </div>
+
 
     </div>
 
     <div class="main-content-graph-div">
       <div class="card-graph">
-        Activity
+        <div class="card-graph-title">
+          Activity
+          <div style="margin-right: 30px;display: inline-flex; align-items: baseline;">
+            <div class="color-box" style="background-color: #37348e;"></div>
+            <a class="color-box-label">Pilates</a>
+
+            <div class="color-box" style="background-color: orange;"></div>
+            <a class="color-box-label">Aerobics</a>
+
+            <div class="color-box" style="background-color: red;"></div>
+            <a class="color-box-label">Box</a>
+          </div>
+        </div>
       </div>
       <div class="card-graph-div">
-        <div class="card-graph-purple vertical-align-center">
-          You done
+        <div class="card-graph-purple">
+          You have done today's goals
+          <div class="card-graph-purple-progress-outer">
+            <div class="card-graph-purple-progress">
+              100%
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -96,15 +142,19 @@
   <div class="dashboard-side-content">
     <div class="notification-bar">
       <div class="buttons">
-        <mat-icon>notifications</mat-icon>
-        <mat-icon>message</mat-icon>
+        <div class="buttons-icon-div">
+          <mat-icon class="buttons-icon-div-icon">notifications</mat-icon>
+        </div>
+        <div class="buttons-icon-div" style="margin-left: 20px;">
+          <mat-icon class="buttons-icon-div-icon">message</mat-icon>
+        </div>
       </div>
 
       <div class="profile vertical-align-center">
 
 
         <div class="profile-avatar">
-          Max Miles
+          <a style="margin-right: 20px; font-size: 16px;">Max Miles</a>
           <img src="./assets/images/profile.jpeg" style="width: 40px; height: 40px; border-radius: 50%;" >
         </div>
       </div>
